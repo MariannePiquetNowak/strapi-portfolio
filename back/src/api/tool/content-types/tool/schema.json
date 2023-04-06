@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tools",
+  "info": {
+    "singularName": "tool",
+    "pluralName": "tools",
+    "displayName": "Tool",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "tools"
+    }
+  }
+}

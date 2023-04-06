@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skill_icons",
+  "info": {
+    "singularName": "skill-icon",
+    "pluralName": "skill-icons",
+    "displayName": "Skill_icon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
