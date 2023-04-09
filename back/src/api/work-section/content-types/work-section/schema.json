@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "work_sections",
+  "info": {
+    "singularName": "work-section",
+    "pluralName": "work-sections",
+    "displayName": "WorkSection"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

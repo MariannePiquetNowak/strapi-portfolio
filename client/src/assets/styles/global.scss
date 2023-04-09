@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:400,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,700&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap');
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    outline: 0; 
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+    color: #333;
+    font-family: $FONT-TEXT;
+    font-size: $FONT-TEXT-MD;
+
+    a {text-decoration: none !important;}
+    h1, h2 { font-weight: $FONT-BOLD; margin: 1em 0; }
+    h3, h4, h5 { font-weight: $FONT-MEDIUM; }
+    p,a { font-weight: $FONT-REGULAR; }
+    p.font-light { font-weight: $FONT-LIGHT; }
+    .title { font-family: $FONT-LOGO; font-size: $FONT-SIZE-LOGO; }
+    .button {
+        font-weight: $FONT-BOLD;
+        font-size: $FONT-TEXT-MD;
+        border-radius: 5px !important;
+        padding: .4em 1.5em;
+    }
+   }
