@@ -3,7 +3,8 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props)
   return (
     <>
         <Head>
@@ -16,3 +17,20 @@ export default function Home() {
     </>
   )
 }
+
+
+// Use the method getStaticProps to get socials in API
+// export const getStaticProps = async () => {
+//     const response = await fetch('http://localhost:1337/api/socials');
+//     const data = await response.json();
+//     const socials = data.data;
+  
+//     return {
+//       props: {
+//         users: socials,
+//       },
+//     };
+//   };
+
+
+
