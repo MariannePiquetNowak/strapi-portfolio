@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useWindowSize from "../hooks";
 
-const Navbar = () => {
+const Navbar = (props) => {
     const router = useRouter();
 
     const size = useWindowSize();
+
+    console.log(props)
 
     function openMenu() {
         const menu = document.querySelector("#navbar-default");
@@ -238,7 +240,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className="hidden w-full md:block md:w-auto mdh-auto">
+                <div className="w-full md:block md:w-auto mdh-auto">
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:space-y-8 md:mt-0">
                         <li>
                             <a href="/about" className="social-icon">
@@ -271,5 +273,23 @@ const Navbar = () => {
         </nav>
     );
 };
+
+
+// Use the method getStaticProps to get socials in API
+export const getStaticProps = async () => {
+    // Call an external API endpoint to get posts.
+    // You can use any data fetching library
+    const res = await fetch('http://localhost:1337/api/skill?populate=*')
+    const data = await res.json()
+    const socials = await data.data;
+  
+    // By returning { props: { posts } }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+      props: {
+        socials,
+      },
+    }
+  }
 
 export default Navbar;
