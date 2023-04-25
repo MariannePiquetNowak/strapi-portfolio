@@ -2,9 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import useWindowSize from "../hooks";
 
 const Navbar = () => {
     const router = useRouter();
+
+    const size = useWindowSize();
 
     function openMenu() {
         const menu = document.querySelector("#navbar-default");
@@ -50,9 +53,9 @@ const Navbar = () => {
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                         ></path>
                     </svg>
                 </button>
@@ -67,66 +70,166 @@ const Navbar = () => {
                                 className={
                                     router.pathname === "/about" ||
                                     router.pathname === "/"
-                                        ? "md:py-4 block pl-3 pr-4 text-white bg-emerald-500 dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-emerald-400 md:dark:bg-gray-800"
-                                        : "md:py-4 block pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-emerald-400 dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
+                                        ? "flex md:justify-center py-2 md:py-4 block md:px-3 text-white dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-[#02BEB3] dark:bg-gray-800 md:dark:bg-gray-800"
+                                        : "flex md:justify-center py-2 md:py-4 block md:px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-[#02BEB3] dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
                                 }
                                 aria-current="page"
                             >
-                                About
+                                {size.width <= 768 ? (
+                                    <>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="mr-3"
+                                        >
+                                            <path
+                                                d="M12.2 13L11.3 13.9C11.1167 14.0833 11.025 14.3167 11.025 14.6C11.025 14.8833 11.1167 15.1167 11.3 15.3C11.4833 15.4833 11.7167 15.575 12 15.575C12.2833 15.575 12.5167 15.4833 12.7 15.3L15.3 12.7C15.5 12.5 15.6 12.2667 15.6 12C15.6 11.7333 15.5 11.5 15.3 11.3L12.7 8.7C12.5167 8.51667 12.2833 8.425 12 8.425C11.7167 8.425 11.4833 8.51667 11.3 8.7C11.1167 8.88333 11.025 9.11667 11.025 9.4C11.025 9.68333 11.1167 9.91667 11.3 10.1L12.2 11H9C8.71667 11 8.479 11.096 8.287 11.288C8.095 11.48 7.99933 11.7173 8 12C8 12.2833 8.096 12.521 8.288 12.713C8.48 12.905 8.71733 13.0007 9 13H12.2ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                                fill="#02BEB3"
+                                            />
+                                        </svg>{" "}
+                                        About
+                                    </>
+                                ) : (
+                                    <>About</>
+                                )}
                             </Link>
                         </li>
+
                         <li>
                             <Link
                                 href="/skills"
                                 className={
                                     router.pathname === "/skills"
-                                    ? "md:py-4 block pl-3 pr-4 text-white bg-emerald-500 dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-emerald-400 md:dark:bg-gray-800 "
-                                    : "md:py-4 block pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-emerald-400 dark:hover:bg-gray-700 md:dark:hover:bg-gray-800 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
+                                    ? "flex md:justify-center py-2 md:py-4 block md:px-3 text-white dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-[#02BEB3] dark:bg-gray-800 md:dark:bg-gray-800"
+                                    : "flex md:justify-center py-2 md:py-4 block md:px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-[#02BEB3] dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
                                 }
                             >
-                                My Skills
+                                {size.width <= 768 ? (
+                                    <>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="mr-3"
+                                        >
+                                            <path
+                                                d="M12.2 13L11.3 13.9C11.1167 14.0833 11.025 14.3167 11.025 14.6C11.025 14.8833 11.1167 15.1167 11.3 15.3C11.4833 15.4833 11.7167 15.575 12 15.575C12.2833 15.575 12.5167 15.4833 12.7 15.3L15.3 12.7C15.5 12.5 15.6 12.2667 15.6 12C15.6 11.7333 15.5 11.5 15.3 11.3L12.7 8.7C12.5167 8.51667 12.2833 8.425 12 8.425C11.7167 8.425 11.4833 8.51667 11.3 8.7C11.1167 8.88333 11.025 9.11667 11.025 9.4C11.025 9.68333 11.1167 9.91667 11.3 10.1L12.2 11H9C8.71667 11 8.479 11.096 8.287 11.288C8.095 11.48 7.99933 11.7173 8 12C8 12.2833 8.096 12.521 8.288 12.713C8.48 12.905 8.71733 13.0007 9 13H12.2ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                                fill="#02BEB3"
+                                            />
+                                        </svg>{" "}
+                                        My Skills
+                                    </>
+                                ) : (
+                                    <>My Skills</>
+                                )}
                             </Link>
                         </li>
+
                         <li>
                             <Link
                                 href="/experience"
                                 className={
                                     router.pathname === "/experience"
-                                    ? "md:py-4 block pl-3 pr-4 text-white bg-emerald-500 dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-emerald-400 md:dark:bg-gray-800"
-                                    : "md:py-4 block pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-emerald-400 dark:hover:bg-gray-700 md:dark:hover:bg-gray-800 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
+                                    ? "flex md:justify-center py-2 md:py-4 block md:px-3 text-white dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-[#02BEB3] dark:bg-gray-800 md:dark:bg-gray-800"
+                                    : "flex md:justify-center py-2 md:py-4 block md:px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-[#02BEB3] dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
                                 }
                             >
-                                Experience
+                                {size.width <= 768 ? (
+                                    <>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="mr-3"
+                                        >
+                                            <path
+                                                d="M12.2 13L11.3 13.9C11.1167 14.0833 11.025 14.3167 11.025 14.6C11.025 14.8833 11.1167 15.1167 11.3 15.3C11.4833 15.4833 11.7167 15.575 12 15.575C12.2833 15.575 12.5167 15.4833 12.7 15.3L15.3 12.7C15.5 12.5 15.6 12.2667 15.6 12C15.6 11.7333 15.5 11.5 15.3 11.3L12.7 8.7C12.5167 8.51667 12.2833 8.425 12 8.425C11.7167 8.425 11.4833 8.51667 11.3 8.7C11.1167 8.88333 11.025 9.11667 11.025 9.4C11.025 9.68333 11.1167 9.91667 11.3 10.1L12.2 11H9C8.71667 11 8.479 11.096 8.287 11.288C8.095 11.48 7.99933 11.7173 8 12C8 12.2833 8.096 12.521 8.288 12.713C8.48 12.905 8.71733 13.0007 9 13H12.2ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                                fill="#02BEB3"
+                                            />
+                                        </svg>{" "}
+                                        Experiences
+                                    </>
+                                ) : (
+                                    <>Experiences</>
+                                )}
                             </Link>
                         </li>
+
                         <li>
                             <Link
                                 href="/projects"
                                 className={
                                     router.pathname === "/projects"
-                                    ? "md:py-4 block pl-3 pr-4 text-white bg-emerald-500 dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-emerald-400 md:dark:bg-gray-800"
-                                    : "md:py-4 block pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-emerald-400 dark:hover:bg-gray-700 md:dark:hover:bg-gray-800 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
+                                    ? "flex md:justify-center py-2 md:py-4 block md:px-3 text-white dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-[#02BEB3] dark:bg-gray-800 md:dark:bg-gray-800"
+                                    : "flex md:justify-center py-2 md:py-4 block md:px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-[#02BEB3] dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
                                 }
                             >
-                                My Works
+                                {size.width <= 768 ? (
+                                    <>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="mr-3"
+                                        >
+                                            <path
+                                                d="M12.2 13L11.3 13.9C11.1167 14.0833 11.025 14.3167 11.025 14.6C11.025 14.8833 11.1167 15.1167 11.3 15.3C11.4833 15.4833 11.7167 15.575 12 15.575C12.2833 15.575 12.5167 15.4833 12.7 15.3L15.3 12.7C15.5 12.5 15.6 12.2667 15.6 12C15.6 11.7333 15.5 11.5 15.3 11.3L12.7 8.7C12.5167 8.51667 12.2833 8.425 12 8.425C11.7167 8.425 11.4833 8.51667 11.3 8.7C11.1167 8.88333 11.025 9.11667 11.025 9.4C11.025 9.68333 11.1167 9.91667 11.3 10.1L12.2 11H9C8.71667 11 8.479 11.096 8.287 11.288C8.095 11.48 7.99933 11.7173 8 12C8 12.2833 8.096 12.521 8.288 12.713C8.48 12.905 8.71733 13.0007 9 13H12.2ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                                fill="#02BEB3"
+                                            />
+                                        </svg>{" "}
+                                        My Works
+                                    </>
+                                ) : (
+                                    <>My Works</>
+                                )}
                             </Link>
                         </li>
+
                         <li>
                             <Link
                                 href="/contact"
                                 className={
                                     router.pathname === "/contact"
-                                    ? "md:py-4 block pl-3 pr-4 text-white bg-emerald-500 dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-emerald-400 md:dark:bg-gray-800"
-                                    : "md:py-4 block pl-3 pr-4 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-emerald-400 dark:hover:bg-gray-700 md:dark:hover:bg-gray-800 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
+                                    ? "flex md:justify-center py-2 md:py-4 block md:px-3 text-white dark:text-gray-900 md:bg-transparent md:p-0 dark:text-white md:dark:text-[#02BEB3] dark:bg-gray-800 md:dark:bg-gray-800"
+                                    : "flex md:justify-center py-2 md:py-4 block md:px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white md:dark:hover:text-[#02BEB3] dark:hover:bg-gray-700 md:dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-all"
                                 }
                             >
-                                Contact
+                                {size.width <= 768 ? (
+                                    <>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="mr-3"
+                                        >
+                                            <path
+                                                d="M12.2 13L11.3 13.9C11.1167 14.0833 11.025 14.3167 11.025 14.6C11.025 14.8833 11.1167 15.1167 11.3 15.3C11.4833 15.4833 11.7167 15.575 12 15.575C12.2833 15.575 12.5167 15.4833 12.7 15.3L15.3 12.7C15.5 12.5 15.6 12.2667 15.6 12C15.6 11.7333 15.5 11.5 15.3 11.3L12.7 8.7C12.5167 8.51667 12.2833 8.425 12 8.425C11.7167 8.425 11.4833 8.51667 11.3 8.7C11.1167 8.88333 11.025 9.11667 11.025 9.4C11.025 9.68333 11.1167 9.91667 11.3 10.1L12.2 11H9C8.71667 11 8.479 11.096 8.287 11.288C8.095 11.48 7.99933 11.7173 8 12C8 12.2833 8.096 12.521 8.288 12.713C8.48 12.905 8.71733 13.0007 9 13H12.2ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+                                                fill="#02BEB3"
+                                            />
+                                        </svg>{" "}
+                                        Contact
+                                    </>
+                                ) : (
+                                    <>Contact</>
+                                )}
                             </Link>
                         </li>
+
                         <li className="py-4 text-center font-bold">
                             <a
                                 href="/lien_vers_cv"
-                                className="md:w-full py-2 px-8 mb-5 md:px-0 border rounded md:border-none border-emerald-400 hover:border-emerald-400  md:rounded-none text-center text-emerald-400 hover:md:text-emerald-400 hover:dark:text-gray-900 hover:bg-emerald-400 transition-all hover:dark:md:bg-gray-900"
+                                className="md:w-full py-2 px-8 mb-5 md:px-0 border rounded md:border-none border-[#02BEB3] hover:border-[#02BEB3]  md:rounded-none text-center text-[#02BEB3] hover:md:text-[#02BEB3] hover:dark:text-gray-900 hover:bg-[#02BEB3] transition-all hover:dark:md:bg-gray-900"
                                 id="resume-btn"
                             >
                                 Resume
