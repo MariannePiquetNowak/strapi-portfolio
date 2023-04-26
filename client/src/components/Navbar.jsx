@@ -35,11 +35,11 @@ const Navbar = () => {
       <div className="md:max-w-screen-xl flex flex-wrap md:flex-nowrap md:flex-col items-center justify-between mx-auto md:h-screen">
         <div className="flex flex-row md:flex-col md:item-center md:justify-center p-4">
           <a
-            href="https://flowbite.com/"
+            href="/"
             className="flex items-center justify-center md:mb-3"
           >
             <Image
-              src="https://flowbite.com/docs/images/logo.svg"
+              src="/images/logo.png"
               className="logo"
               width={40}
               height={40}
