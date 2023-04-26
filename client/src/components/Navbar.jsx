@@ -27,11 +27,11 @@ const Navbar = () => {
 
   function openMenu() {
     const menu = document.querySelector("#navbar-default");
-    menu.classList.toggle("hidden");
+    menu.classList.toggle("hidden")
   }
 
   return (
-    <nav className="bg-[#101624] text-white border-gray-200 md:w-32 md:h-screen">
+    <nav className="bg-[#0f1420] text-white border-gray-200 md:w-32 md:h-screen fixed w-full">
       <div className="md:max-w-screen-xl flex flex-wrap md:flex-nowrap md:flex-col items-center justify-between mx-auto md:h-screen">
         <div className="flex flex-row md:flex-col md:item-center md:justify-center p-4">
           <a
@@ -46,10 +46,10 @@ const Navbar = () => {
               alt="Marianne Piquet-Nowak Logo"
             />
           </a>
-          <span className="hidden md:block self-center text-lg font-semibold whitespace-nowrap text-white">
+          <h5 className="hidden md:block self-center text-lg font-semibold whitespace-nowrap text-white">
             Marianne
-          </span>
-          <p className="hidden md:block text-[11px]">Web Developer</p>
+          </h5>
+          <h6 className="hidden md:block text-[11px]">Web Developer</h6>
         </div>
 
         <button
@@ -76,7 +76,7 @@ const Navbar = () => {
           </svg>
         </button>
         <div
-          className="hidden w-full md:block mdh-auto flex md:flex flex-col items-center md:justify-between md:w-full h-3/4"
+          className="hidden justify-between md:h-3/4 w-full md:block mdh-auto flex md:flex flex-col items-center md:justify-between md:w-full"
           id="navbar-default"
         >
           <ul className="md:border-t-[1px] md:border-b-[1px] border-gray-700 md:w-full font-normal flex flex-col w-4/5 p-4 md:p-0 mt-4 md:mt-0 md:text-center md:divide-y md:divide-y-1 divide-gray-700">
