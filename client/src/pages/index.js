@@ -25,7 +25,7 @@ export default function Home({ about }) {
         />
         <title>Marianne Piquet-Nowak | Full-Stack Developer</title>
       </Head>
-      <section id="About" className="p-6 md:m-10 md:p-8 xl:mx-0 xl:my-[5em] flex flex-col items-center justify-center lg:flex-row-reverse lg:h-screen">
+      <section id="About" className="p-6 md:m-10 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-screen">
         <div className="flex flex-col items-center justify-around lg:flex-row-reverse lg:h-auto">
           <div className="image-section flex justify-center w-80 h-80 lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em]">
             <Image
