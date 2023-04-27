@@ -7,8 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ about, skills, skillIcons }) {
   // Add Loading state at the end of the Home page
+  const [loading, setLoading] = useState(true)
 
-  console.log(skills)
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
+
 
   /*  
     To explain, the problem I'm having is when I get the description, breaks line are not render 
@@ -17,10 +21,9 @@ export default function Home({ about, skills, skillIcons }) {
     */
   const [aboutDesc, setAboutDesc] = useState(null)
   const [skillsDesc, setSkillsDesc] = useState(null)
-  const ref = useRef();
 
-  useEffect(() => setAboutDesc(about.attributes.description))
-  useEffect(() => setSkillsDesc(skills.attributes.description))
+  useEffect(() => setAboutDesc(about?.attributes.description))
+  useEffect(() => setSkillsDesc(skills?.attributes.description))
 
   /* Intersection observer */
   const options = {
@@ -65,7 +68,7 @@ export default function Home({ about, skills, skillIcons }) {
         <div className="xl:px-[2em] flex flex-col items-center justify-between lg:flex-row-reverse lg:h-auto">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em]">
             <Image
-              src={`http://localhost:1337${about.attributes.image.data.attributes.url}`}
+              src={`http://localhost:1337${about?.attributes.image.data.attributes.url}`}
               className="image-section__about w-full h-auto"
               width={250}
               height={100}
@@ -74,8 +77,8 @@ export default function Home({ about, skills, skillIcons }) {
           </div>
           <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6">
             <span>Hi! My Name is</span>
-            <h1>{about.attributes.title}</h1>
-            <h2>{about.attributes.sub_title}</h2>
+            <h1>{about?.attributes.title}</h1>
+            <h2>{about?.attributes.sub_title}</h2>
             <p dangerouslySetInnerHTML={{ __html: aboutDesc }}></p>
           </div>
         </div>
@@ -87,7 +90,7 @@ export default function Home({ about, skills, skillIcons }) {
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto lg:w-full">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute z-10 lg:end-1">
             <Image
-              src={`http://localhost:1337${skills.attributes.image.data.attributes.url}`}
+              src={`http://localhost:1337${skills?.attributes.image.data.attributes.url}`}
               className="image-section__skills w-full h-auto"
               width={250}
               height={100}
@@ -95,12 +98,12 @@ export default function Home({ about, skills, skillIcons }) {
             />
           </div>
           <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute z-20">
-            <h1>{skills.attributes.title}</h1>
-            <h2>{skills.attributes.sub_title}</h2>
+            <h1>{skills?.attributes.title}</h1>
+            <h2>{skills?.attributes.sub_title}</h2>
             <p dangerouslySetInnerHTML={{ __html: skillsDesc }}></p>
             <div>
               <ul className="test flex flex-wrap justify-start py-2">
-                {skillIcons.map((skillIcon) => (
+                {skillIcons?.map((skillIcon) => (
                   <li key={skillIcon.id} className="my-2 mr-3">
                     <a href={`${skillIcon.attributes.url}`}>
                       <Image
