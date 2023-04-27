@@ -1,0 +1,10 @@
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity .5s ease-in, transform .5s ease-in;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
