@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home({ about, skills, skillIcons }) {
   // Add Loading state at the end of the Home page
 
+  console.log(skills)
+
   /*  
     To explain, the problem I'm having is when I get the description, breaks line are not render 
     To work around this, I could use the property dangerouslySetInnerHTML (<p> tags)
@@ -129,21 +131,18 @@ export const getStaticProps = async () => {
   const aboutData = await aboutRes.json()
   const about = aboutData.data
 
-  const skillsRes = await fetch('http://localhost:1337/api/skill?populate=*')
+  const skillsRes = await fetch('http://localhost:1337/api/skill?populate=*&populate=image&populate=skill_icons.icon')
   const skillsData = await skillsRes.json()
   const skills = skillsData.data
-
-  const skillIconsRes = await fetch(
-    'http://localhost:1337/api/skill-icons?populate=*',
-  )
-  const skillIconsData = await skillIconsRes.json()
-  const skillIcons = skillIconsData.data
 
   return {
     props: {
       about: about,
       skills: skills,
-      skillIcons: skillIcons,
+      skillIcons: skills.attributes.skill_icons.data,
     },
   }
 }
+
+// Get image in relation field => comment by andrew-braun
+// https://forum.strapi.io/t/no-image-in-the-api-response/13281/5
