@@ -12,12 +12,12 @@ const Navbar = () => {
 
   const fetchData = async () => {
     const res = await fetch("http://localhost:1337/api/socials?populate=*", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        },
-    })
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     const result = await res.json();
     setSocial(result.data);
   };
@@ -27,17 +27,37 @@ const Navbar = () => {
 
   function openMenu() {
     const menu = document.querySelector("#navbar-default");
-    menu.classList.toggle("hidden")
+    if (menu.classList.contains("close")) {
+      menu.classList.remove("close");
+      menu.classList.add("open");
+    } else {
+      menu.classList.add("close");
+      menu.classList.remove("open");
+    }
   }
+
+  function resizeMenu() {
+    if(size.width >= 768) {
+      const menu = document.querySelector("#navbar-default");
+  
+      const navbar = document.querySelector("#navbar");
+      navbar.appendChild(menu);
+    } else {
+      const menu = document.querySelector("#navbar-default");
+      // Ajouter menu après l'élément #navbar
+      const navbar = document.querySelector("#navbar");
+      navbar.after(menu);
+  
+    }
+  }
+
+  useEffect(() => { resizeMenu() }, [size.width]);
 
   return (
     <nav className="bg-[#0f1420] text-white border-gray-200 md:w-32 md:h-screen fixed w-full">
-      <div className="md:max-w-screen-xl flex flex-wrap md:flex-nowrap md:flex-col items-center justify-between mx-auto md:h-screen">
+      <div  id="navbar" className="md:max-w-screen-xl flex flex-wrap md:flex-nowrap md:flex-col items-center justify-between mx-auto md:h-screen">
         <div className="flex flex-row md:flex-col md:item-center md:justify-center p-4">
-          <a
-            href="/"
-            className="flex items-center justify-center md:mb-3"
-          >
+          <a href="/" className="flex items-center justify-center md:mb-3">
             <Image
               src="/images/logo.png"
               className="logo"
@@ -75,8 +95,10 @@ const Navbar = () => {
             ></path>
           </svg>
         </button>
-        <div
-          className="hidden justify-between md:h-3/4 w-full md:block mdh-auto flex md:flex flex-col items-center md:justify-between md:w-full"
+        
+      </div>
+      <div
+          className="close justify-between md:h-3/4 w-full md:block mdh-auto flex md:flex flex-col items-center md:justify-between md:w-full"
           id="navbar-default"
         >
           <ul className="md:border-t-[1px] md:border-b-[1px] border-gray-700 md:w-full font-normal flex flex-col w-4/5 p-4 md:p-0 mt-4 md:mt-0 md:text-center md:divide-y md:divide-y-1 divide-gray-700">
@@ -85,9 +107,9 @@ const Navbar = () => {
                 href="/about"
                 className={
                   router.pathname === "/about" || router.pathname === "/"
-                  ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
-                  : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
-              }
+                    ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
+                    : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
+                }
                 aria-current="page"
               >
                 {size.width <= 768 ? (
@@ -118,7 +140,7 @@ const Navbar = () => {
                 href="/skills"
                 className={
                   router.pathname === "/skills"
-                  ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
+                    ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
                     : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
                 }
               >
@@ -150,7 +172,7 @@ const Navbar = () => {
                 href="/experience"
                 className={
                   router.pathname === "/experience"
-                  ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
+                    ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
                     : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
                 }
               >
@@ -214,9 +236,9 @@ const Navbar = () => {
                 href="/contact"
                 className={
                   router.pathname === "/contact"
-                  ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
-                  : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
-              }
+                    ? "flex md:justify-center py-2 px-3 md:py-4 block md:p-0 text-white md:text-[#02BEB3] bg-gray-800 md:bg-gray-800"
+                    : "flex md:justify-center py-2 px-3 md:py-4 block hover:bg-gray-100 md:border-0 md:p-0 text-white md:hover:text-[#02BEB3] hover:bg-gray-800 md:hover:bg-gray-800 hover:text-white transition-all"
+                }
               >
                 {size.width <= 768 ? (
                   <>
@@ -254,24 +276,32 @@ const Navbar = () => {
 
           <div className="flex justify-center w-full md:block md:w-full mdh-auto">
             <ul className="font-medium flex flex-row justify-between md:flex-col md:items-center p-4 md:p-0 mt-4 md:space-y-4 md:mt-0 w-60 md:w-auto">
-              {socials && socials?.map((social, index) => (
-                  <li key={social.id} className="hover:md:translate-x-0.5 transition-all">
-                    <a href={social.attributes.url} className="social-icon" target="_blank">
-                    <Image 
-                      width={20}
-                      height={20}
-                      src={`http://localhost:1337${social.attributes.icon.data.attributes.url}`} 
-                      alt="social icon"
-                      />  
+              {socials &&
+                socials?.map((social, index) => (
+                  <li
+                    key={social.id}
+                    className="hover:md:translate-x-0.5 transition-all"
+                  >
+                    <a
+                      href={social.attributes.url}
+                      className="social-icon"
+                      target="_blank"
+                    >
+                      <Image
+                        width={20}
+                        height={20}
+                        src={`http://localhost:1337${social.attributes.icon.data.attributes.url}`}
+                        alt="social icon"
+                      />
                     </a>
                   </li>
                 ))}
-                {size.width >= 768 ? (<div className="md:w-[1px] md:h-[3em] md:bg-[#02BEB3]"></div>) : null }
+              {size.width >= 768 ? (
+                <div className="md:w-[1px] md:h-[3em] md:bg-[#02BEB3]"></div>
+              ) : null}
             </ul>
           </div>
         </div>
-
-      </div>
     </nav>
   );
 };
