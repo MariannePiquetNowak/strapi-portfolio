@@ -7,12 +7,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ about, skills, skillIcons }) {
   // Add Loading state at the end of the Home page
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000)
-  }, [])
-
 
   /*  
     To explain, the problem I'm having is when I get the description, breaks line are not render 
@@ -85,10 +79,10 @@ export default function Home({ about, skills, skillIcons }) {
       </section>
       <section
         id="Skills"
-        className="reveal p-6 my-16 mx-10 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-[800px] lg:relative"
+        className="reveal p-6 my-16 mx-10 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-[800px]"
       >
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto lg:w-full">
-          <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute z-10 lg:end-1">
+          <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
             <Image
               src={`http://localhost:1337${skills?.attributes.image.data.attributes.url}`}
               className="image-section__skills w-full h-auto"
@@ -97,7 +91,7 @@ export default function Home({ about, skills, skillIcons }) {
               alt="Marianne Piquet-Nowak puzzle illustration"
             />
           </div>
-          <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute z-20">
+          <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute lg:z-20">
             <h1>{skills?.attributes.title}</h1>
             <h2>{skills?.attributes.sub_title}</h2>
             <p dangerouslySetInnerHTML={{ __html: skillsDesc }}></p>
