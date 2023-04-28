@@ -13,9 +13,9 @@ const Loader = () => {
   return (
     <div className="loader fixed z-50 w-screen h-screen">
       <span>Loading... </span>
-      <div class="bg-gray-800 rounded-full h-2.5 dark:bg-gray-700">
-        <div class="bg-gray-800 rounded-full h-2.5 dark:bg-gray-700">
-          <div class="h-2.5 rounded-full"></div>
+      <div className="bg-gray-800 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="bg-gray-800 rounded-full h-2.5 dark:bg-gray-700">
+          <div className="h-2.5 rounded-full"></div>
         </div>
       </div>
     </div>

@@ -1,10 +1,29 @@
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
+    // transform: translateY(50px);
     transition: opacity .5s ease-in, transform .5s ease-in;
+    position: static !important;
+    z-index: -1 !important;
   }
   
   .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    // transform: translateY(0);
+    position: static !important;
+    z-index: -1 !important;
+  }
+
+
+  @media screen and (min-width: 768px) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity .5s ease-in, transform .5s ease-in;
+
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
