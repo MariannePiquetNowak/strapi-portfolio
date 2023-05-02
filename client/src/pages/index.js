@@ -6,7 +6,13 @@ import useWindowSize from "../hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ about, skills, skillIcons, experiences }) {
+export default function Home({
+  about,
+  skills,
+  skillIcons,
+  experiences,
+  projects,
+}) {
   /*  
     To explain, the problem I'm having is when I get the description, breaks line are not render 
     To work around this, I could use the property dangerouslySetInnerHTML (<p> tags)
@@ -19,6 +25,7 @@ export default function Home({ about, skills, skillIcons, experiences }) {
 
   useEffect(() => setAboutDesc(about?.attributes.description));
   useEffect(() => setSkillsDesc(skills?.attributes.description));
+
 
   /* Intersection observer */
   const options = {
@@ -122,7 +129,7 @@ export default function Home({ about, skills, skillIcons, experiences }) {
             <div className="flex items-end">
               <Image
                 src={`/images/arrow-circle-gradient.svg`}
-                className="image-section__skills w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
+                className="arow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
                 width={10}
                 height={10}
                 alt="Marianne Piquet-Nowak puzzle illustration"
@@ -170,7 +177,7 @@ export default function Home({ about, skills, skillIcons, experiences }) {
             <div className="flex items-end">
               <Image
                 src={`/images/arrow-circle-gradient.svg`}
-                className="image-section__experiences w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
+                className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
                 width={10}
                 height={10}
                 alt="Marianne Piquet-Nowak Experience illustration"
@@ -188,7 +195,10 @@ export default function Home({ about, skills, skillIcons, experiences }) {
                 })}
               </div>
 
-              <div key={`experience-${xp?.id}`} className="xp-info py-10 md:p-5">
+              <div
+                key={`experience-${xp?.id}`}
+                className="xp-info py-10 md:p-5"
+              >
                 <h3 className="text-white font-bold underline decoration-1 decoration-solid underline-offset-4">
                   {xp?.attributes.title_agency.toUpperCase()}
                 </h3>
@@ -201,12 +211,58 @@ export default function Home({ about, skills, skillIcons, experiences }) {
                   ))}
                 </ul>
               </div>
-
             </div>
           </div>
         </div>
       </section>
-      <section className="Projects">Projects Section</section>
+      <section
+        id="Projects"
+        className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse active"
+      >
+        <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
+          <div className="info pad1l-5 py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute lg:z-20 w-full">
+            <div className="flex items-end">
+              <Image
+                src={`/images/arrow-circle-gradient.svg`}
+                className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
+                width={10}
+                height={10}
+                alt="Marianne Piquet-Nowak puzzle illustration"
+              />
+              <h1>Some works I’ve build</h1>
+            </div>
+
+            <div className="w-full my-5">
+              {projects?.map((project, index) => (
+                <div key={`project-${project?.id}`} className="w-full h-auto">
+                  <div className="image">
+                    <Image
+                      src={`/images/arrow-circle-gradient.svg`}
+                      className="project-image lg:mb-2 mr-2 md:mr-3"
+                      width={200}
+                      height={200}
+                      alt="Marianne Piquet-Nowak puzzle illustration"
+                    />
+                  </div>
+                  <div className="text">
+                    <span>{project?.attributes.type}</span>
+                    <h2>{project?.attributes.name}</h2>
+                    <p>{project?.attributes.description}</p>
+                    <div className="mt-6 tools flex flex-wrap">
+                      {project?.attributes.tools.data?.map( (tool, index) => (
+                        <span key={`project-name_${index}`} className="pr-3">{tool?.attributes.name}</span>
+                      ))}
+                    </div>
+                    <div className="flex justify-end">
+                        <a href={project?.attributes.external_link}>github</a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="Contact">Contact Section</section>
     </>
   );
@@ -232,12 +288,19 @@ export const getStaticProps = async () => {
   const experienceData = await experienceRes.json();
   const experiences = experienceData.data;
 
+  const projectRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}projects?populate=*`
+  );
+  const projectData = await projectRes.json();
+  const projects = projectData.data;
+
   return {
     props: {
       about: about,
       skills: skills,
       skillIcons: skills.attributes.skill_icons.data,
       experiences: experiences,
+      projects: projects,
     },
   };
 };
