@@ -11,9 +11,9 @@ body {
       font-size: $sub-title-size-mobile;
       color: $color-sub;
       font-weight: 700;
-      padding-top: 20px;
+      padding: 20px 0;
     }
-    p {
+    p, li {
       font-size: $text-size-mobile;
       line-height: 20px;
     }
@@ -42,7 +42,8 @@ body {
       font-size: $sub-title-size-tablet !important;
     }
     p,
-    span {
+    span,
+    li {
       font-size: $text-size-tablet !important;
     }
     p {
@@ -102,6 +103,10 @@ body {
   
     p > p:not(:last-child) {
       padding-bottom: 2em;
+    }
+
+    @media screen and (min-width: 1534px) {
+      margin: auto 6em;
     }
   }
   
