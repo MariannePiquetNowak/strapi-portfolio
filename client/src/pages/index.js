@@ -132,7 +132,7 @@ export default function Home({ about, skills, skillIcons, experiences }) {
             <h2>{skills?.attributes.sub_title}</h2>
             <p dangerouslySetInnerHTML={{ __html: skillsDesc }}></p>
             <div>
-              <ul className="test flex flex-wrap justify-start py-2">
+              <ul className="test flex flex-wrap justify-start pt-6 md:pt-10">
                 {skillIcons?.map((skillIcon) => (
                   <li key={skillIcon.id} className="my-2 mr-3">
                     <a href={`${skillIcon.attributes.url}`}>
