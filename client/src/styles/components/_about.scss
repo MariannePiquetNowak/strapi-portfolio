@@ -27,3 +27,17 @@
       transform: translateY(0);
     }
   }
+
+  @media screen and (min-width: 1530px) {
+    #About {
+        margin-right: 2.5rem !important;
+        margin-left: 2.5rem !important;
+    }
+}
+
+@media screen and (min-width: 1530px) {
+  #Skills {
+      margin-right: 2.5rem !important;
+      margin-left: 2.5rem !important;
+  }
+}

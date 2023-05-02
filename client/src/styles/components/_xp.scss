@@ -1,0 +1,54 @@
+#Experience {
+    div.info {
+        max-width: 500px !important;
+        min-height: 600px !important;
+    }
+}
+.xp-buttons {
+    border-bottom: 1px solid $color-info;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    button {
+        border: 1px solid $color-info;
+        cursor: pointer;
+        transform: translateY(10px);
+        transition: transform 0.3s ease-in-out;
+
+        &.active {
+            transform: translateY(1px);
+                background-color: rgb(31 41 55);
+        }
+    }
+
+}
+
+div.xp-info {
+    h3  {
+        color: $color-info !important;
+    }
+}
+
+ul {
+    li.task {
+        list-style: none;
+        line-height: 1.5rem;
+    }
+
+    li.task::before {
+        content: ">";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        color: $color-info; /* Change the color */
+        font-weight: bold; /* If you want it to be bold */
+        display: inline-block; /* Needed to add space between the bullet and the text */
+        width: 1em; /* Also needed for space (tweak if needed) */
+        margin-left: -1em; /* Also needed for space (tweak if needed) */
+    }
+}   
+
+// Thanks to w3school : https://www.w3schools.com/howto/howto_css_bullet_color.asp
+
+@media screen and (min-width: 1530px) {
+    #Experience {
+        margin-right: 2.5rem !important;
+        margin-left: 2.5rem !important;
+    }
+}
