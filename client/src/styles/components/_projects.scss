@@ -1,8 +1,146 @@
-#Projects {
-    div.tools {
-        span {
-            font-size: $text-size-tablet !important;
-            font-weight: 300 !important;
+section#Projects {
+    div.info { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & > div  { width: 100%; }
+    }
+    ul.projects {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        max-width: 1000px;
+
+        li.project {
+            display: flex;
+            position: relative;
+            margin: 7em 0;   
+            align-items: center;   
+            height: 500px; 
+
+            @media screen and (max-width: 1024px) {
+                margin: 3em 0;;
+            }
+            
+            div.project-image {
+                width: 70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                z-index: 2;
+                opacity: .5;
+                height: 100%;
+                transition: transform 0.5s ease-in-out;   
+
+                &::before { 
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: $background-linear;
+                    opacity: .2;
+                    z-index: 1;
+                    @media screen and (max-width: 768px) {
+                        height: 500px; 
+                    }
+                }
+                @media screen and (max-width: 1024px) {
+                    width: 100%;
+                    opacity: .2;
+                }
+                @media screen and (max-width: 768px) {
+                    height: 500px;
+                    
+                }
+ 
+            }
+            div.project-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+                // transform: translateX(100%);
+                transition: all 0.5s ease-in-out; 
+                width: 100%;
+                z-index: 3;
+                position: relative;
+ 
+                @media screen and (max-width: 1024px) {
+                    width: inherit;
+                    padding:2em;
+                }
+
+                div { 
+                    max-width: 500px;
+                 }
+
+                span {
+                    font-size: $sub-title-size-mobile !important;
+                }
+                h2 {
+                    padding: 0.5em 0;
+                    font-size: $title-size-mobile !important;
+                }
+                h2,
+                span {
+                    text-align: end;
+                }
+                p {
+                    margin: 1em 0;
+                    padding: 1em;
+                    background-color: #0a192f;
+                    border: 1px solid $color-info;
+                    border-radius: 5px;
+                    font-size: $text-size-tablet !important;
+                    line-height: 1.5 !important;
+                }
+
+                & > div {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    ul {
+                        list-style: none;
+                        li {
+                            font-size: $text-size-tablet !important;
+                            line-height: 1.5 !important;
+                            color: $color-info;
+                            margin-bottom: 1em;
+                            position: relative;
+                        }
+                        li:last-child {
+                            padding-right: 0 !important;
+                        }
+                    }
+
+                    div {
+                        padding-top: 0.5em;
+                    }
+                }
+            }
+        }
+
+        li.project:nth-child(even) {
+            flex-direction: row-reverse;
+            div.project-content {
+                align-items: flex-start;
+                // transform: translateX(-300px);
+                h2 {
+                    text-align: start;
+                }
+                div {
+                    align-items: flex-start;
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                }
+            }
         }
     }
 }
+

@@ -1,7 +1,20 @@
 #Experience {
     div.info {
-        max-width: 500px !important;
-        min-height: 600px !important;
+
+        .xp-content {
+            .xp-info {
+                max-width: 600px !important;
+                height: 300px !important;
+                overflow: scroll !important;
+
+            }
+            @media screen and (min-width: 768px) {
+                .xp-info {
+                    max-width: 600px !important;
+                    min-height: 400px !important;
+                }
+            }
+        }
     }
 }
 .xp-buttons {
@@ -16,14 +29,13 @@
 
         &.active {
             transform: translateY(1px);
-                background-color: rgb(31 41 55);
+            background-color: rgb(31 41 55);
         }
     }
-
 }
 
 div.xp-info {
-    h3  {
+    h3   {
         color: $color-info !important;
     }
 }
@@ -35,14 +47,14 @@ ul {
     }
 
     li.task::before {
-        content: ">";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+        content: ">"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
         color: $color-info; /* Change the color */
         font-weight: bold; /* If you want it to be bold */
         display: inline-block; /* Needed to add space between the bullet and the text */
         width: 1em; /* Also needed for space (tweak if needed) */
         margin-left: -1em; /* Also needed for space (tweak if needed) */
     }
-}   
+}
 
 // Thanks to w3school : https://www.w3schools.com/howto/howto_css_bullet_color.asp
 

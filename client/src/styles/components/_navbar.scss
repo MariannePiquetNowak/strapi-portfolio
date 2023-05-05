@@ -1,11 +1,14 @@
 @media screen and (max-width: 767px) {
     nav {
         position: relative;
+        z-Index: 999 !important;
+
+        a { font-weight: 500; font-size: $text-size-tablet;}
     }
     #navbar {
         position: absolute;
         top: 0;
-        z-index: 9999 !important  ;
+        z-index: 50 !important  ;
         background-color: #0f1420 !important;
         width: 100%;
     }
@@ -13,7 +16,7 @@
     #navbar-default {
         transition: all 0.5s ease-in-out;
         position: absolute;
-        z-index: 999 !important;
+        z-index: 40 !important;
     }
 
     .close {
@@ -28,4 +31,9 @@
         top: 3em;
         background-color: #0f1420;
     }
+}
+
+nav {
+    z-Index: 999 !important;
+
 }
