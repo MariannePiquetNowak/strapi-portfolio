@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'localhost',
+        hostname: 'admin.mariannepiquet.fr',
         port: '1337',
         pathname: '/uploads/',
       },

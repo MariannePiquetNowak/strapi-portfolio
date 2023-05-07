@@ -95,7 +95,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-between lg:flex-row-reverse lg:w-full lg:h-auto">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em]">
             <Image
-              src={`http://localhost:1337${about?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${about?.attributes.image.data.attributes.url}`}
               className="image-section__about w-full h-auto"
               width={250}
               height={100}
@@ -117,7 +117,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
             <Image
-              src={`http://localhost:1337${skills?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${skills?.attributes.image.data.attributes.url}`}
               className="image-section__skills w-full h-auto"
               width={250}
               height={100}
@@ -143,7 +143,7 @@ export default function Home({
                   <li key={skillIcon.id} className="my-2 mr-3">
                     <a href={`${skillIcon.attributes.url}`}>
                       <Image
-                        src={`http://localhost:1337${skillIcon.attributes.icon.data.attributes.url}`}
+                        src={`https://admin.mariannepiquet.fr${skillIcon.attributes.icon.data.attributes.url}`}
                         className="w-7 h-7 md:w-10 md:h-10"
                         width={10}
                         height={10}
@@ -164,7 +164,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
             <Image
-              src={`http://localhost:1337${experiences?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${experiences?.attributes.image.data.attributes.url}`}
               className="image-section__experience w-full h-auto"
               width={250}
               height={100}
@@ -184,10 +184,10 @@ export default function Home({
               <h1>{experiences?.attributes?.title}</h1>
             </div>
             <div className="xp-content w-full mt-5">
-              <div className="xp-buttons flex flex-row">
-                {experiences?.attributes.experiences.data?.map((xp) => {
+              <div className="xp-buttons flex flex-row overflow-hidden">
+                {experiences?.attributes.experiences?.data?.map((xp, index) => {
                   return (
-                    <button key={`btn-${xp?.id}`} className="btn p-2">
+                    <button key={`btn-${index}`} className="btn p-2" id={`btn-${index}`}>
                       {xp?.attributes.name_agency}
                     </button>
                   )
@@ -233,7 +233,7 @@ export default function Home({
                 <li key={`project-${project?.id}`} className="reveal project w-[100%]">
                   <div className="project-image">
                     {/* <Image
-                      src={`http://localhost:1337${project?.attributes.image?.data?.attributes?.url}`}
+                      src={`https://admin.mariannepiquet.fr${project?.attributes.image?.data?.attributes?.url}`}
                       className=""
                       width={200}
                       height={200}
@@ -244,7 +244,7 @@ export default function Home({
                     {`
                       .project-image {
                         background-image: url(
-                          http://localhost:1337${project?.attributes.image?.data?.attributes?.url}
+                          https://admin.mariannepiquet.fr${project?.attributes.image?.data?.attributes?.url}
                         );
                         background-size: cover;
                         background-position: center;
@@ -282,7 +282,7 @@ export default function Home({
                               }
                             >
                               <Image
-                                src={`http://localhost:1337${project?.attributes.versionnings?.data[0]?.attributes.icon?.data?.attributes.url}`}
+                                src={`https://admin.mariannepiquet.fr${project?.attributes.versionnings?.data[0]?.attributes.icon?.data?.attributes.url}`}
                                 className="project-image lg:mb-2 mr-2"
                                 width={20}
                                 height={20}
@@ -320,24 +320,52 @@ export default function Home({
 export const getStaticProps = async () => {
   const aboutRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}about?populate=*`,
+    {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+      },
+    }
   )
   const aboutData = await aboutRes.json()
   const about = aboutData.data
 
   const skillsRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}skill?populate=*&populate=image&populate=skill_icons.icon`,
+    {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+      },
+    }
   )
   const skillsData = await skillsRes.json()
   const skills = skillsData.data
 
   const experienceRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}work-section?populate=*&populate=image&populate=experiences.tasks`,
+    {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+      },
+    }
   )
   const experienceData = await experienceRes.json()
   const experiences = experienceData.data
 
   const projectRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}projects?populate=*&populate=image&populate=tools&populate=versionnings.icon`,
+    {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+      },
+    }
   )
   const projectData = await projectRes.json()
   const projects = projectData.data
