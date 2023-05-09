@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "preview-email": "email dev"
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
