@@ -265,9 +265,10 @@ const Navbar = () => {
 
             <li className="py-4 text-center font-bold">
               <a
-                href="/lien_vers_cv"
+                href="/docs/CV_Marianne_Piquet-Nowak_Front-End.pdf"
                 className="md:w-full py-2 px-8 mb-5 md:px-0 border rounded md:border-none border-[#02BEB3] hover:border-[#02BEB3]  md:rounded-none text-center text-[#02BEB3] hover:md:text-[#02BEB3] hover:text-gray-900 hover:bg-[#02BEB3] transition-all hover:md:bg-gray-900"
                 id="resume-btn"
+                target="_blank"
               >
                 Resume
               </a>

@@ -2,8 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
-import useWindowSize from "../hooks";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
@@ -21,7 +19,6 @@ export default function Home({
   const [aboutDesc, setAboutDesc] = useState(null);
   const [skillsDesc, setSkillsDesc] = useState(null);
   const [xp, setExperience] = useState(null);
-  const size = useWindowSize();
 
   useEffect(() => setAboutDesc(about?.attributes.description));
   useEffect(() => setSkillsDesc(skills?.attributes.description));
@@ -319,24 +316,77 @@ export default function Home({
       </section>
       <section
         id="Contact"
-        className="reveal contact p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-[800px]"
+        className="reveal contact m-6 md:m-8 flex flex-col items-center justify-center md:mb-16"
       >
-        <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
-          <div className="contact__map">// Emplacement Map</div>
-
-          <div className="info py-5 lg:mr-6 w-full">
-            <div className="flex items-end">
-              <Image
-                src={`/images/arrow-circle-gradient.svg`}
-                className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
-                width={10}
-                height={10}
-                alt="arrow-circle"
-              />
-              <h1>Some works I’ve build</h1>
+        <div className="flex flex-col items-center justify-end lg:h-auto w-full">
+          <div className="contact__info py-5 lg:mr-6 w-full flex flex-col">
+          <div className="contact__image flex flex-col items-end mb-8 md:mb-0 w-full"></div>
+            <div className="contact__content w-full">
+              <div className="flex items-end mb-8">
+                <Image
+                  src={`/images/arrow-circle-gradient.svg`}
+                  className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
+                  width={10}
+                  height={10}
+                  alt="arrow-circle"
+                />
+                <h1>Contact me</h1>
+              </div>
+              <p className="pb-3">
+                I am interested in ambitious and team-based project
+                opportunities.
+              </p>
+              <p className="pb-3">
+                However, if you have other request or questions, don’t hesitate
+                to use the form.{" "}
+              </p>
+              <div className="contact__form flex justify-start w-full">
+                <form className="flex flex-col w-full">
+                  <div className="flex flex-col">
+                    <div className="flex flex-col w-full">
+                      <label htmlFor="name">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                      />
+                    </div>
+                    <div className="flex flex-col w-full">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                      />
+                    </div>
+                    <div className="flex flex-col w-full">
+                      <label htmlFor="text">Subject</label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="Subject"
+                      />
+                    </div>
+                    <div className="flex flex-col w-full">
+                      <label htmlFor="message">Message</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Message"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-center w-full">
+                    <button className="submit mt-5">Send message</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-
         </div>
       </section>
     </>
@@ -354,7 +404,11 @@ export const getStaticProps = async () => {
         Accept: "application/json",
       },
     }
-  );
+  ).catch((error) => {
+    console.log(
+      `Il y a eu une erreur lors de la récupération des données : ${error}`
+    );
+  });
   const aboutData = await aboutRes.json();
   const about = aboutData.data;
 
@@ -367,7 +421,11 @@ export const getStaticProps = async () => {
         Accept: "application/json",
       },
     }
-  );
+  ).catch((error) => {
+    console.log(
+      `Il y a eu une erreur lors de la récupération des compétences : ${error}`
+    );
+  });
   const skillsData = await skillsRes.json();
   const skills = skillsData.data;
 
@@ -380,7 +438,11 @@ export const getStaticProps = async () => {
         Accept: "application/json",
       },
     }
-  );
+  ).catch((error) => {
+    console.log(
+      `Il y a eu une erreur lors de la récupération des expériences : ${error}`
+    );
+  });
   const experienceData = await experienceRes.json();
   const experiences = experienceData.data;
 
@@ -393,7 +455,11 @@ export const getStaticProps = async () => {
         Accept: "application/json",
       },
     }
-  );
+  ).catch((error) => {
+    console.log(
+      `Il y a eu une erreur lors de la récupération des projets : ${error}`
+    );
+  });
   const projectData = await projectRes.json();
   const projects = projectData.data;
 

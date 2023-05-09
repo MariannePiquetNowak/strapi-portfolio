@@ -1,0 +1,65 @@
+.contact {
+  & > div {
+    @media screen and (min-width: 768px) {
+      margin-left: 1em;
+    }
+  }
+
+  &__info {
+    gap: 2em;
+    justify-content: center;
+    @media screen and (min-width: 1024px) {
+      flex-direction: row-reverse !important;
+    }
+    p {
+      font-size: $text-size-tablet;
+    }
+  }
+  &__image {
+    background: url("/images/contact.jpg") no-repeat center center;
+    height: 300px;
+    @media screen and (min-width: 768px) {
+      height: auto;
+      width: 600px;
+    }
+  }
+  &__content {
+    max-width: 700px;
+  }
+  &__form {
+    form {
+      label {
+        font-size: $text-size-tablet;
+        color: $color-sub;
+        visibility: hidden;
+      }
+      input,
+      textarea {
+        font-size: $text-size-tablet;
+        color: $color-base;
+        background: $background;
+        border: 1px solid $color-sub;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        &:focus {
+          outline: none;
+          border: 1px solid $color-info;
+        }
+      }
+      button {
+        border: 1px solid $color-info;
+        color: $color-info;
+        font-weight: 500;
+        border-radius: 5px;
+        padding: 10px 20px;
+        transition: all 0.2s ease-in-out;
+        width: 200px;
+        &:hover {
+          background: $color-info;
+          color: $background;
+        }
+      }
+    }
+  }
+}
