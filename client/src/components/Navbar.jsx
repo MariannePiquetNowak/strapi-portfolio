@@ -11,7 +11,7 @@ const Navbar = () => {
   const [socials, setSocial] = useState([]);
 
   const fetchData = async () => {
-    const res = await fetch("http://localhost:1337/api/socials?populate=*", {
+    const res = await fetch("https://admin.mariannepiquet.fr/api/socials?populate=*", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -265,9 +265,10 @@ const Navbar = () => {
 
             <li className="py-4 text-center font-bold">
               <a
-                href="/lien_vers_cv"
+                href="/docs/CV_Marianne_Piquet-Nowak_Front-End.pdf"
                 className="md:w-full py-2 px-8 mb-5 md:px-0 border rounded md:border-none border-[#02BEB3] hover:border-[#02BEB3]  md:rounded-none text-center text-[#02BEB3] hover:md:text-[#02BEB3] hover:text-gray-900 hover:bg-[#02BEB3] transition-all hover:md:bg-gray-900"
                 id="resume-btn"
+                target="_blank"
               >
                 Resume
               </a>
@@ -290,7 +291,7 @@ const Navbar = () => {
                       <Image
                         width={20}
                         height={20}
-                        src={`http://localhost:1337${social.attributes.icon.data.attributes.url}`}
+                        src={`https://admin.mariannepiquet.fr${social.attributes.icon.data.attributes.url}`}
                         alt="social icon"
                       />
                     </a>
