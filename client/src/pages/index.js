@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { useState, useEffect } from 'react'
-import useWindowSize from '../hooks'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useState, useEffect } from "react";
+import useWindowSize from "../hooks";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
   about,
@@ -18,64 +18,64 @@ export default function Home({
     To work around this, I could use the property dangerouslySetInnerHTML (<p> tags)
     But there are a hydration problem. It's the reason I use useState & useEffect hooks
     */
-  const [aboutDesc, setAboutDesc] = useState(null)
-  const [skillsDesc, setSkillsDesc] = useState(null)
-  const [xp, setExperience] = useState(null)
-  const size = useWindowSize()
+  const [aboutDesc, setAboutDesc] = useState(null);
+  const [skillsDesc, setSkillsDesc] = useState(null);
+  const [xp, setExperience] = useState(null);
+  const size = useWindowSize();
 
-  useEffect(() => setAboutDesc(about?.attributes.description))
-  useEffect(() => setSkillsDesc(skills?.attributes.description))
+  useEffect(() => setAboutDesc(about?.attributes.description));
+  useEffect(() => setSkillsDesc(skills?.attributes.description));
 
   /* Intersection observer */
   const options = {
-    rootMargin: '-40% 0px',
+    rootMargin: "-40% 0px",
     threshold: 0,
-  }
+  };
 
-  const t = { rootMargin: '0px', threshold: 0 }
+  const t = { rootMargin: "0px", threshold: 0 };
 
   useEffect(() => {
-    const blocks = document.querySelectorAll('.reveal')
+    const blocks = document.querySelectorAll(".reveal");
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active')
-          observer.unobserve(entry.target)
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
         }
-      })
-    }, options)
+      });
+    }, options);
 
     blocks.forEach((block) => {
-      observer.observe(block)
-    })
-  }, [])
+      observer.observe(block);
+    });
+  }, []);
 
   useEffect(() => {
-    const firstBtn = document.querySelector('.btn')
-    firstBtn.classList.add('active')
+    const firstBtn = document.querySelector(".btn");
+    firstBtn.classList.add("active");
     experiences?.attributes.experiences.data?.map((xp) => {
       xp?.attributes.name_agency === firstBtn.textContent
         ? setExperience(xp)
-        : null
-    })
-  })
+        : null;
+    });
+  });
 
   useEffect(() => {
     // Ajouter la classe active au bouton cliqué
-    const btns = document.querySelectorAll('.btn')
+    const btns = document.querySelectorAll(".btn");
     btns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        btns.forEach((btn) => btn.classList.remove('active'))
-        e.target.classList.add('active')
+      btn.addEventListener("click", (e) => {
+        btns.forEach((btn) => btn.classList.remove("active"));
+        e.target.classList.add("active");
         experiences?.attributes.experiences.data?.map((xp) => {
           xp?.attributes.name_agency === e.target.textContent
             ? setExperience(xp)
-            : null
-        })
-      })
-    })
-  }, [])
+            : null;
+        });
+      });
+    });
+  }, []);
 
   return (
     <>
@@ -95,7 +95,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-between lg:flex-row-reverse lg:w-full lg:h-auto">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em]">
             <Image
-              src={`http://localhost:1337${about?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${about?.attributes.image.data.attributes.url}`}
               className="image-section__about w-full h-auto"
               width={250}
               height={100}
@@ -117,7 +117,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
             <Image
-              src={`http://localhost:1337${skills?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${skills?.attributes.image.data.attributes.url}`}
               className="image-section__skills w-full h-auto"
               width={250}
               height={100}
@@ -131,7 +131,7 @@ export default function Home({
                 className="arow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
                 width={10}
                 height={10}
-                alt="Marianne Piquet-Nowak puzzle illustration"
+                alt="arrow-circle"
               />
               <h1>{skills?.attributes.title}</h1>
             </div>
@@ -143,7 +143,7 @@ export default function Home({
                   <li key={skillIcon.id} className="my-2 mr-3">
                     <a href={`${skillIcon.attributes.url}`}>
                       <Image
-                        src={`http://localhost:1337${skillIcon.attributes.icon.data.attributes.url}`}
+                        src={`https://admin.mariannepiquet.fr${skillIcon.attributes.icon.data.attributes.url}`}
                         className="w-7 h-7 md:w-10 md:h-10"
                         width={10}
                         height={10}
@@ -164,7 +164,7 @@ export default function Home({
         <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
           <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
             <Image
-              src={`http://localhost:1337${experiences?.attributes.image.data.attributes.url}`}
+              src={`https://admin.mariannepiquet.fr${experiences?.attributes.image.data.attributes.url}`}
               className="image-section__experience w-full h-auto"
               width={250}
               height={100}
@@ -179,18 +179,22 @@ export default function Home({
                 className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
                 width={10}
                 height={10}
-                alt="Marianne Piquet-Nowak Experience illustration"
+                alt="arrow-circle"
               />
               <h1>{experiences?.attributes?.title}</h1>
             </div>
             <div className="xp-content w-full mt-5">
-              <div className="xp-buttons flex flex-row">
-                {experiences?.attributes.experiences.data?.map((xp) => {
+              <div className="xp-buttons flex flex-row overflow-hidden">
+                {experiences?.attributes.experiences?.data?.map((xp, index) => {
                   return (
-                    <button key={`btn-${xp?.id}`} className="btn p-2">
+                    <button
+                      key={`btn-${index}`}
+                      className="btn p-2"
+                      id={`btn-${index}`}
+                    >
                       {xp?.attributes.name_agency}
                     </button>
-                  )
+                  );
                 })}
               </div>
 
@@ -223,17 +227,20 @@ export default function Home({
                 className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
                 width={10}
                 height={10}
-                alt="Marianne Piquet-Nowak puzzle illustration"
+                alt="arrow-circle"
               />
               <h1>Some works I’ve build</h1>
             </div>
 
             <ul className="projects w-full mt-5">
               {projects?.map((project, index) => (
-                <li key={`project-${project?.id}`} className="reveal project w-[100%]">
+                <li
+                  key={`project-${project?.id}`}
+                  className="reveal project w-[100%]"
+                >
                   <div className="project-image">
                     {/* <Image
-                      src={`http://localhost:1337${project?.attributes.image?.data?.attributes?.url}`}
+                      src={`https://admin.mariannepiquet.fr${project?.attributes.image?.data?.attributes?.url}`}
                       className=""
                       width={200}
                       height={200}
@@ -243,9 +250,8 @@ export default function Home({
                   <style jsx>
                     {`
                       .project-image {
-                        background-image: url(
-                          http://localhost:1337${project?.attributes.image?.data?.attributes?.url}
-                        );
+                        background-image: url(https://admin.mariannepiquet.fr${project
+                          ?.attributes.image?.data?.attributes?.url});
                         background-size: cover;
                         background-position: center;
                         background-repeat: no-repeat;
@@ -269,7 +275,7 @@ export default function Home({
                               >
                                 {tool?.attributes.name}
                               </li>
-                            ),
+                            )
                           )}
                         </ul>
                         <div className="project-links flex justify-end">
@@ -282,7 +288,7 @@ export default function Home({
                               }
                             >
                               <Image
-                                src={`http://localhost:1337${project?.attributes.versionnings?.data[0]?.attributes.icon?.data?.attributes.url}`}
+                                src={`https://admin.mariannepiquet.fr${project?.attributes.versionnings?.data[0]?.attributes.icon?.data?.attributes.url}`}
                                 className="project-image lg:mb-2 mr-2"
                                 width={20}
                                 height={20}
@@ -311,36 +317,85 @@ export default function Home({
           </div>
         </div>
       </section>
-      <section className="Contact">Contact Section</section>
+      <section
+        id="Contact"
+        className="reveal contact p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-[800px]"
+      >
+        <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
+          <div className="contact__map">// Emplacement Map</div>
+
+          <div className="info py-5 lg:mr-6 w-full">
+            <div className="flex items-end">
+              <Image
+                src={`/images/arrow-circle-gradient.svg`}
+                className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
+                width={10}
+                height={10}
+                alt="arrow-circle"
+              />
+              <h1>Some works I’ve build</h1>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </>
-  )
+  );
 }
 
 // Use the method getStaticProps to get socials in API
 export const getStaticProps = async () => {
   const aboutRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}about?populate=*`,
-  )
-  const aboutData = await aboutRes.json()
-  const about = aboutData.data
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+  const aboutData = await aboutRes.json();
+  const about = aboutData.data;
 
   const skillsRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}skill?populate=*&populate=image&populate=skill_icons.icon`,
-  )
-  const skillsData = await skillsRes.json()
-  const skills = skillsData.data
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+  const skillsData = await skillsRes.json();
+  const skills = skillsData.data;
 
   const experienceRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}work-section?populate=*&populate=image&populate=experiences.tasks`,
-  )
-  const experienceData = await experienceRes.json()
-  const experiences = experienceData.data
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+  const experienceData = await experienceRes.json();
+  const experiences = experienceData.data;
 
   const projectRes = await fetch(
     `${process.env.NEXT_PUBLIC_API_PORTFOLIO_URL}projects?populate=*&populate=image&populate=tools&populate=versionnings.icon`,
-  )
-  const projectData = await projectRes.json()
-  const projects = projectData.data
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+  const projectData = await projectRes.json();
+  const projects = projectData.data;
 
   return {
     props: {
@@ -350,8 +405,8 @@ export const getStaticProps = async () => {
       experiences: experiences,
       projects: projects,
     },
-  }
-}
+  };
+};
 
 // Get image in relation field => comment by andrew-braun
 // https://forum.strapi.io/t/no-image-in-the-api-response/13281/5

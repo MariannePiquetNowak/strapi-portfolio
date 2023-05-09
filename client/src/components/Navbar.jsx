@@ -11,7 +11,7 @@ const Navbar = () => {
   const [socials, setSocial] = useState([]);
 
   const fetchData = async () => {
-    const res = await fetch("http://localhost:1337/api/socials?populate=*", {
+    const res = await fetch("https://admin.mariannepiquet.fr/api/socials?populate=*", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -290,7 +290,7 @@ const Navbar = () => {
                       <Image
                         width={20}
                         height={20}
-                        src={`http://localhost:1337${social.attributes.icon.data.attributes.url}`}
+                        src={`https://admin.mariannepiquet.fr${social.attributes.icon.data.attributes.url}`}
                         alt="social icon"
                       />
                     </a>
