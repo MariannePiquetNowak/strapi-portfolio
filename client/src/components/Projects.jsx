@@ -7,7 +7,7 @@ const Projects = ({projects}) => {
       id="Projects"
       className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center"
     >
-      <div className="xl:px-[5.5em] flex flex-col items-center justify-end w-full">
+      <div className="xl:px-[2em]">
         <div className="info py-5 lg:mr-6 w-full">
           <div className="flex items-end">
             <Image
@@ -26,15 +26,7 @@ const Projects = ({projects}) => {
                 key={`project-${project?.id}`}
                 className="reveal project w-[100%]"
               >
-                <div className="project-image">
-                  {/* <Image
-                      src={`https://admin.mariannepiquet.fr${project?.attributes.image?.data?.attributes?.url}`}
-                      className=""
-                      width={200}
-                      height={200}
-                      alt="Marianne Piquet-Nowak puzzle illustration"
-                    /> */}
-                </div>
+                <div className="project-image"></div>
                 <style jsx>
                   {`
                     .project-image {

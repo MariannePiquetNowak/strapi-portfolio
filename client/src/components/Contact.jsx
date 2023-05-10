@@ -45,9 +45,9 @@ const Contact = () => {
   return (
     <section
       id="Contact"
-      className="reveal contact m-6 md:m-8 flex flex-col items-center justify-center md:mb-16"
+      className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center active"
     >
-      <div className="flex flex-col items-center justify-end lg:h-auto w-full">
+      <div className="xl:px-[2em] lg:h-auto">
         <div className="contact__info py-5 lg:mr-6 w-full flex flex-col">
           <div className="contact__image flex flex-col items-end mb-8 md:mb-0 w-full"></div>
           <div className="contact__content w-full">
