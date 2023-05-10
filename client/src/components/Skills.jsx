@@ -18,7 +18,7 @@ const Skills = ({ skills, skillIcons, skillsDesc }) => {
           />
         </div>
         <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute lg:z-20">
-          <div className="flex items-end">
+          <div className="flex items-end mb-8">
             <Image
               src={`/images/arrow-circle-gradient.svg`}
               className="arow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"

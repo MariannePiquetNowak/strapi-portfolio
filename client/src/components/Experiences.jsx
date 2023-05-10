@@ -7,7 +7,7 @@ const Experiences = ({experiences, xp}) => {
       id="Experience"
       className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center lg:flex-row-reverse lg:h-[800px]"
     >
-      <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-auto w-full">
+      <div className="xl:px-[2em] flex flex-col items-center justify-end lg:flex-row-reverse lg:h-full w-full">
         <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em] lg:absolute lg:z-20 lg:end-1">
           <Image
             src={`https://admin.mariannepiquet.fr${experiences?.attributes.image.data.attributes.url}`}
@@ -19,7 +19,7 @@ const Experiences = ({experiences, xp}) => {
         </div>
 
         <div className="info pt-5 lg:w-4/5 xl:w-2/4 lg:auto lg:mr-6 lg:absolute lg:z-20 w-full">
-          <div className="flex items-end">
+          <div className="flex items-end mb-8">
             <Image
               src={`/images/arrow-circle-gradient.svg`}
               className="arrow-circle w-9 h-9 md:w-14 md:h-14 lg:mb-2 mr-2 md:mr-3"
