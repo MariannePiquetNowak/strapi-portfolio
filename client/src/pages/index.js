@@ -61,7 +61,9 @@ export default function Home({
         ? setExperience(xp)
         : null;
     });
-  });
+  }, []);
+
+  console.log(xp)
 
   useEffect(() => {
     // Ajouter la classe active au bouton cliqué

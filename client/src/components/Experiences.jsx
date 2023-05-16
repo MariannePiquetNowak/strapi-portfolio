@@ -34,9 +34,9 @@ const Experiences = ({experiences, xp}) => {
               {experiences?.attributes.experiences?.data?.map((xp, index) => {
                 return (
                   <button
-                    key={`btn-${index}`}
+                    key={`${xp?.id}`}
                     className="btn p-2"
-                    id={`btn-${index}`}
+                    id={`btn-${xp?.id}`}
                   >
                     {xp?.attributes.name_agency}
                   </button>

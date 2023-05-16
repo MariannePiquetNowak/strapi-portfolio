@@ -60,6 +60,7 @@ const Projects = ({projects}) => {
                               project?.attributes.versionnings?.data[0]
                                 ?.attributes.url
                             }
+                            referrerPolicy="no-referrer-when-downgrade"
                           >
                             <Image
                               src={`https://admin.mariannepiquet.fr${project?.attributes.versionnings?.data[0]?.attributes.icon?.data?.attributes.url}`}
@@ -71,7 +72,7 @@ const Projects = ({projects}) => {
                           </a>
                         ) : null}
                         {project?.attributes.external_link != null ? (
-                          <a href={project?.attributes.external_link}>
+                          <a href={project?.attributes.external_link} referrerPolicy="no-referrer-when-downgrade">
                             <Image
                               src={`/images/external-link.svg`}
                               className="project-image lg:mb-2"

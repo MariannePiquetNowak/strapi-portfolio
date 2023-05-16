@@ -45,7 +45,7 @@ const Contact = () => {
   return (
     <section
       id="Contact"
-      className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center active"
+      className="reveal p-6 md:p-8 xl:mx-0 flex flex-col items-center justify-center"
     >
       <div className="xl:px-[2em] lg:h-auto">
         <div className="contact__info py-5 lg:mr-6 w-full flex flex-col">

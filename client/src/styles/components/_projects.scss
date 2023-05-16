@@ -107,7 +107,7 @@ section#Projects {
                             text-align: start;
                             div.project-content {
                                 display: flex;
-                                align-items: start;
+                                align-items: flex-start;
                                 padding: 0;
                                 & > div {
                                     padding: 0 2em;
@@ -126,7 +126,7 @@ section#Projects {
                         }
                         div.project-content {
                             display: flex;
-                            align-items: end;
+                            align-items: flex-end;
                             padding: 0;
                             & > div {
                                 padding: 0 2em;
