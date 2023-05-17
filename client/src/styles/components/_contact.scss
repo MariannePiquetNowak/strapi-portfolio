@@ -55,7 +55,7 @@
         padding: 10px 20px;
         transition: all 0.2s ease-in-out;
         width: 200px;
-        &:hover {
+        &:hover, &.btn-success {
           background: $color-info;
           color: $background;
         }

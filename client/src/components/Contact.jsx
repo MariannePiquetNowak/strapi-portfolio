@@ -27,11 +27,13 @@ const Contact = () => {
       .then(
         (response) => {
           btn.current.textContent = "Message sent!";
+          btn.current.classList.add("btn-success");
           console.log("SUCCESS!", response.status, response.text);
           if(response.status === 200) {
             setTimeout(() => {
               form.current.reset();
               btn.current.textContent = "Send message";
+            btn.current.classList.remove("btn-success");
             }, 2000);
           }
         },
@@ -82,7 +84,6 @@ const Contact = () => {
                       id="name"
                       name="name"
                       placeholder="Name"
-                      value=""
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
