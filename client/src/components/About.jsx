@@ -11,6 +11,8 @@ const About = ({ about, aboutDesc }) => {
         <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em]">
           <Image
             src={`https://admin.mariannepiquet.fr${about?.attributes.image.data.attributes.url}`}
+            placeholder="blur"
+            blurDataURL={`https://admin.mariannepiquet.fr$${about?.attributes.image.data.attributes.url}`}
             className="image-section__about w-full h-auto"
             width={250}
             height={100}
