@@ -63,8 +63,6 @@ export default function Home({
     });
   }, []);
 
-  console.log(xp)
-
   useEffect(() => {
     // Ajouter la classe active au bouton cliqué
     const btns = document.querySelectorAll(".btn");
@@ -80,6 +78,7 @@ export default function Home({
       });
     });
   }, []);
+
 
   return (
     <div>
