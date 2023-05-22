@@ -152,3 +152,24 @@ section#Projects {
         margin-left: 2.5rem !important;
     }
 }
+
+li.close {
+    display: none !important;
+}
+
+button.dont-show {
+    display: none !important;
+}
+
+button.see-more-project {
+    padding: 0.5em 3em ;
+    border: 1px solid $color-info;
+    border-radius: 5px;
+    color: $color-info;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        background-color: $color-info;
+        color: $background;
+    }
+}
