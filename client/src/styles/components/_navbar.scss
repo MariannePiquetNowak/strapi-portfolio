@@ -3,7 +3,7 @@
         position: relative;
         z-Index: 999 !important;
 
-        a { font-weight: 500; font-size: $text-size-tablet;}
+        a, button { font-weight: 500; font-size: $text-size-tablet;}
     }
     #navbar {
         position: absolute;
