@@ -8,7 +8,7 @@ const Projects = ({ projects }) => {
     const projectsList = document.querySelectorAll(".project");
     projectsList.forEach((project, index) => {
       if (index >= 2) {
-        project.classList.add("close");
+        project.classList.add("no-more-projects");
       }
     });
   }, [projects]);
@@ -18,7 +18,7 @@ const Projects = ({ projects }) => {
     const btnSeeMore = document.querySelector(".see-more-project");
     projectsList.forEach((project, index) => {
       if (index >= 2) {
-        project.classList.remove("close");
+        project.classList.remove("no-more-projects");
         btnSeeMore.classList.add("dont-show");
       }
     });
