@@ -1,4 +1,4 @@
-#Experience {
+#Experiences {
     div.info {
 
         .xp-content {
@@ -27,7 +27,7 @@
         transform: translateY(10px);
         transition: transform 0.3s ease-in-out;
 
-        &.active {
+        &.active-experience {
             transform: translateY(1px);
             background-color: rgb(31 41 55);
         }
@@ -59,7 +59,7 @@ ul {
 // Thanks to w3school : https://www.w3schools.com/howto/howto_css_bullet_color.asp
 
 @media screen and (min-width: 1530px) {
-    #Experience {
+    #Experiences {
         margin-right: 2.5rem !important;
         margin-left: 2.5rem !important;
     }

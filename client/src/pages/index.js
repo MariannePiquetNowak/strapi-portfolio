@@ -55,7 +55,7 @@ export default function Home({
 
   useEffect(() => {
     const firstBtn = document.querySelector(".btn");
-    firstBtn.classList.add("active");
+    firstBtn.classList.add("active-experience");
     experiences?.attributes.experiences.data?.map((xp) => {
       xp?.attributes.name_agency === firstBtn.textContent
         ? setExperience(xp)
@@ -68,8 +68,8 @@ export default function Home({
     const btns = document.querySelectorAll(".btn");
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        btns.forEach((btn) => btn.classList.remove("active"));
-        e.target.classList.add("active");
+        btns.forEach((btn) => btn.classList.remove("active-experience"));
+        e.target.classList.add("active-experience");
         experiences?.attributes.experiences.data?.map((xp) => {
           xp?.attributes.name_agency === e.target.textContent
             ? setExperience(xp)

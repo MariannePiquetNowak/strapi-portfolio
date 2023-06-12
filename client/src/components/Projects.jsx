@@ -123,7 +123,7 @@ const Projects = ({ projects }) => {
             })}
           </ul>
 
-          <button type="button" className="btn see-more-project" onClick={handleProjects}>
+          <button type="button" className="btn-project see-more-project" onClick={handleProjects}>
             See more
           </button>
         </div>

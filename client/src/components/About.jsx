@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const About = ({ about, aboutDesc }) => {
+  const [isLoading, setLoading] = useState(true);
   return (
     <section
       id="About"
@@ -11,12 +12,16 @@ const About = ({ about, aboutDesc }) => {
         <div className="image-section flex justify-center w-80 h-auto lg:w-3/6 xl:w-2/5 2xl:w-1/3 lg:h-auto lg:translate-y-[-8em] lg:translate-x-[-3em]">
           <Image
             src={`https://admin.mariannepiquet.fr${about?.attributes.image.data.attributes.url}`}
-            placeholder="blur"
             blurDataURL={`https://admin.mariannepiquet.fr$${about?.attributes.image.data.attributes.url}`}
-            className="image-section__about w-full h-auto"
             width={250}
             height={100}
             alt="Marianne Piquet-Nowak Avatar"
+            className={`image-section__about w-full h-auto duration-700 ease-in-out group-hover:opacity-75
+              ${
+                isLoading ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0"
+              }
+            `}
+            onLoadingComplete={() => setLoading(false)}
           />
         </div>
         <div className="info py-5 lg:w-4/5 xl:w-2/4 lg:h-auto lg:mr-6">
