@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "percentage": {
+      "type": "integer",
+      "required": true,
+      "unique": false,
+      "default": 10,
+      "max": 100,
+      "min": 10,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "skill_icons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill-icon.skill-icon",
+      "mappedBy": "category"
+    }
+  }
+}
